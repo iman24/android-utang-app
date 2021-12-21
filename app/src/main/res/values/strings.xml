@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Utang App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="meminjam">Meminjam</string>
+    <string name="dipinjam">Dipinjam</string>
+    <string name="customer_name">Nama Customer</string>
+    <string name="date">Tanggal</string>
+    <string name="total">Total</string>
+</resources>

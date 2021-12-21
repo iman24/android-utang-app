@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/dipinjam"
+        android:icon="@drawable/icon_dipinjam"
+        android:title="@string/dipinjam"></item>
+
+    <item android:id="@+id/meminjam"
+        android:icon="@drawable/icon_meminjam"
+        android:title="@string/meminjam"></item>
+
+
+</menu>
