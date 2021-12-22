@@ -4,15 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.util.ArrayMap;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.imanancin.utangapp.R;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -20,7 +27,11 @@ public class TambahActivity extends AppCompatActivity {
 
     EditText et_customer, et_total, et_date;
     Button tambah;
+    RadioGroup pilih;
+    RadioButton rb_dipinjam, rb_meminjam;
     Calendar calendar = Calendar.getInstance();
+
+    ArrayMap<String, String> data = new ArrayMap<String, String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +41,11 @@ public class TambahActivity extends AppCompatActivity {
         et_customer = (EditText) findViewById(R.id.et_customer);
         et_total = (EditText) findViewById(R.id.et_total);
         et_date = (EditText) findViewById(R.id.et_date);
+        rb_dipinjam = (RadioButton) findViewById(R.id.rb_dipinjam);
+        rb_meminjam = (RadioButton) findViewById(R.id.rb_meminjam);
+        pilih = (RadioGroup) findViewById(R.id.pilih);
+
+
         updateDateLabel();
 
 
@@ -37,7 +53,19 @@ public class TambahActivity extends AppCompatActivity {
         tambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(TambahActivity.this, et_customer.getText(), Toast.LENGTH_SHORT).show();
+                int p = pilih.getCheckedRadioButtonId();
+                switch (p) {
+                    case R.id.rb_dipinjam:
+                        data.put("dipinjam", "ya");
+                        break;
+                    case R.id.meminjam:
+                        data.put("meminjam", "ya");
+                        break;
+                }
+                data.put("customer", et_customer.getText().toString());
+                data.put("total", et_total.getText().toString());
+                data.put("date", et_date.getText().toString());
+                Toast.makeText(TambahActivity.this, data.toString(), Toast.LENGTH_SHORT).show();
             }
         });
 
